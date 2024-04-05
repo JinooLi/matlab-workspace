@@ -11,4 +11,4 @@ La = 1.7e-3;                % Amature Inductance [H]
 J = .00252;                 % Moment of Inertia [kg-m^2]
 B = 0.1;                    % Coefficient of Viscous Friction [kgm^2/s]
 
-K = Te_rated/Ia_rated;      % Kt+Flux
+K = Te_rated/Ia_rated;      % Kt*Flux
