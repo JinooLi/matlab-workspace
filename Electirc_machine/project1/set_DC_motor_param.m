@@ -13,8 +13,14 @@ B = 0.1;                    % Coefficient of Viscous Friction [kgm^2/s]
 
 K = Te_rated/Ia_rated;      % Kt*Flux
 
-% Controller Parameters
-Wcc = 500;                  % 대역폭 [Hz]
+% Current Controller Parameters
+Wcc = 5000;                 % 대역폭 [Hz]
 Kpc = La*Wcc;               % P-gain
 Kic = Ra*Wcc;               % I-gain
 Kac = 1/Kpc;                % Anti-Windup gian
+
+% velocity Controller Parameters
+Wcs = 500;                  %
+Kps = J*Wcs/Te_rated;
+Kis = J*Wcs*Wcs/(5*Te_rated);
+Kas = 1/Kps;
