@@ -9,17 +9,19 @@ simout = sim('DC_velo_con');
 
 % plot
 nexttile
-plot(simout.tout,simout.control.Data(:,1),LineWidth=2,Color=[0 0 1]);
+plot(simout.tout,simout.velocon.Data(:,3),LineWidth=2,Color=[1 0 0]);
+hold on
+plot(simout.tout,simout.velocon.Data(:,2),LineWidth=2,Color=[0 1 0]);
 xlabel('Time[sec]')
-ylabel('[A]')
+ylabel('velocity[r/min]')
 xlim([0 0.2])
-legend('Ia[A]','Iaref[A]')
+legend('Wrpm_{ref}','Wrpm')
 grid on
 
 nexttile
-plot(simout.tout,simout.control.Data(:,2),LineWidth=2,Color=[1 0 0]);
+plot(simout.tout,simout.velocon.Data(:,1),LineWidth=2,Color=[0 0 1]);
 xlabel('Time[sec]')
-ylabel('[A]')
+ylabel('torque[Nm]')
 xlim([0 0.2])
-legend('Ia[A]','Iaref[A]')
 grid on
+
