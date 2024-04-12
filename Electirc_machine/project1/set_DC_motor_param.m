@@ -9,19 +9,18 @@ Te_rated = Power/Wm_rated;  % Rated Torque [Nm]
 Ra = 0.26;                  % Amature Resistance [Ohm]
 La = 1.7e-3;                % Amature Inductance [H]
 J = .00252;                 % Moment of Inertia [kgm^2]
-B = 0.1;                    % Coefficient of Viscous Friction [kgm^2/s]
+B = 0.0;                    % Coefficient of Viscous Friction [kgm^2/s]
 
 K = Te_rated/Ia_rated;      % Kt*Flux
 
 % Current Controller Parameters
-Wcc = 2500;                 % 대역폭 [Hz]
+Wcc = 5000;                 % 대역폭 [Hz]
 Kpc = La*Wcc;               % P-gain
 Kic = Ra*Wcc;               % I-gain
 Kac = 1/Kpc;                % Anti-Windup gian
 
 % velocity Controller Parameters
-Wcs = 50;                  %
-Kps = J*Wcs/Te_rated;
-Kis = J*Wcs*Wcs/(5*Te_rated);
+Wcs = 500;                  %
+Kps = J*Wcs/K;
+Kis = J*Wcs*Wcs/(5*K);
 Kas = 1/Kps;
-Te_lim_k = 1;
