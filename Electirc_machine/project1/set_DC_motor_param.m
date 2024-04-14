@@ -20,7 +20,7 @@ Kic = Ra*Wcc;               % I-gain
 Kac = 1/Kpc;                % Anti-Windup gian
 
 % velocity Controller Parameters
-Wcs = 500;                  
+Wcs = 1000;                  
 Kps = J*Wcs/K;
 Kis = J*Wcs*Wcs/(5*K);
 Kas = 1/Kps;
