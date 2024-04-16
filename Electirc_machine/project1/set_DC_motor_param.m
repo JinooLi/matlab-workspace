@@ -13,16 +13,16 @@ B = 0.01;                   % Coefficient of Viscous Friction [kgm^2/s]
 K = Te_rated/Ia_rated;      % Kt*Flux
 
 % Current Controller Parameters
-Wcc = 1000;                 % 대역폭 [Hz]
+Wcc = 10000;                 % 대역폭 [Hz]
 Kpc = La*Wcc;               % P-gain
 Kic = Ra*Wcc;               % I-gain
 Kac = 1/Kpc;                % Anti-Windup gian
 
 % velocity Controller Parameters
-Wcs = 100;                  
-Kps = J*Wcs/K;
-Kis = J*Wcs*Wcs/(5*K);
-Kas = 1/Kps;
+Wcs = 100;                  % 대역폭 [Hz]
+Kps = J*Wcs/K;              % P-gain
+Kis = J*Wcs*Wcs/(5*K);      % I-gain
+Kas = 1/Kps;                % Anti-Windup gain
 
 % Chopper parameter
 Vdc = Va_rated;
