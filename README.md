@@ -26,3 +26,9 @@ time = simout.tout % 시간
 
 하지만, 시뮬레이션이 되긴 하지만 제대로 동작하지 않는 것을 확인하였다.  
 되도록이면 시뮬레이션은 한 파일에 모두 만드는 것을 추천한다. 만약 모듈화를 하고싶으면 하나의 파일 안에서 하자.
+
+# 디렉토리 설명
+- [Electric machine](./Electirc_machine/)는 전기기기 수업시간에 과제로써 나오는 프로젝트를 넣어놓는다.
+
+- [Digital Control](./Digital_Control/)에는 디지털 제어 수업 관련 문서들을 넣어놓는다. 
+ 내용물로는 [레포지토리](https://github.com/CDSL-UoS/Course_Digital-Control_2024)에서 가져온 자료와 과제가 있다.
