@@ -6,11 +6,7 @@ Gp_tf = tf(num,den);
 T=0.2;
 Gd_tf = c2d(Gp_tf,T,'zoh');
 
-% margin(Gd_tf);
-
 Gw_tf = d2c(Gd_tf,'tustin');
-% figure();
-% margin(Gw_tf); grid on;
 
 om_w1 = 2.49;
 
