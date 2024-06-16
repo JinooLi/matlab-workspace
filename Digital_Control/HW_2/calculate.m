@@ -2,7 +2,7 @@ clc; clear; close all;
 syms t;
 
 % Define the function
-b = -(0.8+t)+(t+1)*exp(-0.2/t);
+b = -(0.8+t)+(t-1)*exp(-0.2/t);
 c = t + (0.8-t)*exp(-0.2/t);
 
 % function for jury stability criterion
