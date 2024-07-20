@@ -39,6 +39,7 @@ x_hat_init = [0; 0]; % initial state
 x_hat = x_hat_init; % initial state estimate
 P_hat = P_init; % initial state covariance estimate
 x_hat_hist = zeros(2,measre_count); % state estimate history
+P_hat_norm_hist = zeros(1,measre_count); % state covariance estimate history
 x_hat_hist(:,1) = x_hat; % initial state estimate
 
 dif_norm = zeros(1,measre_count); % difference of real and estimated states by norm
@@ -50,6 +51,7 @@ for i = 1:measre_count
     P_hat = P_hat - (P_hat*C.'/(C*P_hat*C.'+R))*C*P_hat;
 
     x_hat_hist(:,i) = x_hat; % store the state estimate
+    P_hat_norm_hist(i) = norm(P_hat); % store the state covariance estimate
     
     % time update
     x_hat = A*x_hat + B*real_u;
@@ -62,19 +64,26 @@ end
 
 % plot the results
 figure
-tiledlayout(2,1)
+tiledlayout(3,1)
 
 % plot the real and estimated norm of states
 nexttile
 plot(tout,real_norm,'r',tout,est_norm,'b')
 xlabel('Time [s]')
 ylabel('Norm')
-title('Real and estimated norm of states')
+title('Norm of real and estimated  states')
 legend('Real','Estimated')
 
-% plot the difference of real and estimated states by norm
+% plot norm of the difference of real and estimated states
 nexttile
 plot(tout,dif_norm,'r')
 xlabel('Time [s]')
 ylabel('Norm')
-title('Difference of real and estimated states by norm')
+title('Norm of difference of real and estimated states')
+
+% plot the estimated covariance
+nexttile
+plot(tout,P_hat_norm_hist,'r')
+xlabel('Time [s]')
+ylabel('Norm of covariance')
+title('Norm of Estimated covariance')
