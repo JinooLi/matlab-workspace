@@ -33,7 +33,7 @@ z = y + v; % measured output signal
 %% preset values
 Q = process_noise.sigma; % process noise covariance
 R = measure_noise.sigma; % measurement noise covariance
-P_init = 1; % initial state covariance
+P_init = [10 0; 0 10]; % initial state covariance
 x_hat_init = [0; 0]; % initial state
 
 x_hat = x_hat_init; % initial state estimate
