@@ -33,7 +33,7 @@ z = y + v; % measured output signal
 %% preset values
 Q = process_noise.sigma; % process noise covariance
 R = measure_noise.sigma; % measurement noise covariance
-P_init = [10 0; 0 10]; % initial state covariance
+P_init = [0.1 0; 0 0.1]; % initial state covariance
 x_hat_init = [0; 0]; % initial state
 
 x_hat = x_hat_init; % initial state estimate
@@ -45,6 +45,7 @@ x_hat_hist(:,1) = x_hat; % initial state estimate
 dif_norm = zeros(1,measre_count); % difference of real and estimated states by norm
 real_norm = zeros(1,measre_count); % real norm of states
 est_norm = zeros(1,measre_count); % estimated norm of states
+
 for i = 1:measre_count
     % measurement update
     x_hat = x_hat + (P_hat*C.'/(C*P_hat*C.'+R))*(z(i)-C*x_hat);
@@ -62,24 +63,38 @@ for i = 1:measre_count
     est_norm(i) = norm([x_hat_hist(1,i) x_hat_hist(2,i)]);
 end
 
+% make normal estimator
+p = [0.1 0.2]; % eigenvalues of the estimator
+L = place(A.', C.', p)'; % estimator gain
+x_hat = x_hat_init; % initial state estimate
+x_normal_est_norm = zeros(1,measre_count); % state estimate history
+x_normal_dif_norm = zeros(1,measre_count); % difference of real and estimated states by norm
+for i = 1:measre_count
+    % measurement update
+    x_hat = (A-L*C)*x_hat + L*z(i) + B*real_u;
+    x_normal_est_norm(i) = norm(x_hat); % store the state estimate
+    x_normal_dif_norm(i) = norm(x_hat-x(i)); % store the difference of real and estimated states by norm
+end
+
 % plot the results
 figure
 tiledlayout(3,1)
 
 % plot the real and estimated norm of states
 nexttile
-plot(tout,real_norm,'r',tout,est_norm,'b')
+plot(tout,real_norm,'r',tout,est_norm,'b',tout,x_normal_est_norm,'g')
 xlabel('Time [s]')
 ylabel('Norm')
-title('Norm of real and estimated  states')
-legend('Real','Estimated')
+title('Norm of real and estimated states')
+legend('Real','Kalman','Normal')
 
 % plot norm of the difference of real and estimated states
 nexttile
-plot(tout,dif_norm,'r')
+plot(tout,dif_norm,'b',tout,x_normal_dif_norm,'g')
 xlabel('Time [s]')
 ylabel('Norm')
 title('Norm of difference of real and estimated states')
+legend('Kalman','Normal')
 
 % plot the estimated covariance
 nexttile
