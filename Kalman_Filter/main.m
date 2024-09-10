@@ -17,7 +17,7 @@ process_noise.sigma = 0.2; % standard deviation of the process_noise
 measure_noise.mu = 0; % mean of the measure_noise
 measure_noise.sigma = 0.2; % standard deviation of the measure_noise
 
-measre_count = 50; % number of measurements (only integer values)
+measre_count = 100; % number of measurements (only integer values)
 v = normrnd(measure_noise.mu, measure_noise.sigma, measre_count,1); % measurement noise
 w = normrnd(process_noise.mu, process_noise.sigma, 1, measre_count); % process noise
 
@@ -73,7 +73,7 @@ for i = 1:measre_count
     % measurement update
     x_hat = (A-L*C)*x_hat + L*z(i) + B*real_u;
     x_normal_est_norm(i) = norm(x_hat); % store the state estimate
-    x_normal_dif_norm(i) = norm(x_hat-x(i)); % store the difference of real and estimated states by norm
+    x_normal_dif_norm(i) = norm(x_hat-x(i,:).'); % store the difference of real and estimated states by norm
 end
 
 % plot the results
