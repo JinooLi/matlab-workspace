@@ -33,3 +33,5 @@ time = simout.tout % 시간
 - [Digital Control](./Digital_Control/)에는 디지털 제어 수업 [레포지토리](https://github.com/CDSL-UoS/Course_Digital-Control_2024)에서 가져온 자료와 과제가 있다.
 
 - [kalman Filter](./Kalman_Filter/)에는 칼만필터 공부를 위해 직접 칼만필터를 구현한 코드가 있다.
+
+- [Digital Signal Processing](./Digital_Signal_Processing/)에는 DSP 수업에서 나오는 MATLAB 과제를 넣는다.
