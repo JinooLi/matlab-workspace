@@ -31,3 +31,5 @@ time = simout.tout % 시간
 - [Electric machine](./Electirc_machine/)는 전기기기 수업시간에 과제로써 나오는 프로젝트를 넣어놓는다.
 
 - [Digital Control](./Digital_Control/)에는 디지털 제어 수업 [레포지토리](https://github.com/CDSL-UoS/Course_Digital-Control_2024)에서 가져온 자료와 과제가 있다.
+
+- [kalman Filter](./Kalman_Filter/)에는 칼만필터 공부를 위해 직접 칼만필터를 구현한 코드가 있다.
