@@ -1,10 +1,10 @@
 clc; clear; close all;
-%(a)
-L = 40;
+L = 80;
 A = 1.5;
-omega = 0;
-phy = pi/2;
-
+omega = 0.65*pi;
+phy = 0.5*pi;
 n = 0:L;
 
-stem(n, A*sin(n*omega+phy))
+stem(n, A*sin(n*omega+phy));
+%hold on; plot((0:.1:L),A*sin((0:.1:L)*omega+phy),'r');
+plot
